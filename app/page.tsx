@@ -3,19 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from "next/link";
 
-
 export default function SinFiltroPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const [isMobile, setIsMobile] = useState(false);
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-    }
-  }, []);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return localStorage.getItem('theme') !== 'light';
+  });
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -41,6 +36,14 @@ export default function SinFiltroPage() {
     };
   }, [isMobile]);
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 640 && menuOpen) setMenuOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [menuOpen]);
+
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
@@ -50,8 +53,6 @@ export default function SinFiltroPage() {
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Black&family=Poppins:wght@400;600;700;800&display=swap');
-
         :root {
           --neon-green: #C7FF00;
           --hot-pink: #FF1493;
@@ -77,7 +78,7 @@ export default function SinFiltroPage() {
         }
 
         body {
-          font-family: 'Poppins', sans-serif;
+          font-family: var(--font-poppins), sans-serif;
           background: ${isDark 
             ? 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)' 
             : 'linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%)'};
@@ -96,6 +97,7 @@ export default function SinFiltroPage() {
 
       <div className="container">
         <header className="header">
+          
           <Link href="/friends">
             <button className="friends-section">
               <span className="friends-text">Friends</span>
@@ -109,8 +111,13 @@ export default function SinFiltroPage() {
           
           <div className="nav-right">
             <div className="auth-buttons">
-              <button className="auth-btn">Sign In</button>
-              <button className="auth-btn">Register</button>
+              <Link href="/signin">
+                <button className="auth-btn">Sign In</button>
+              </Link>
+              
+              <Link href="/register">
+                <button className="auth-btn">Register</button>
+              </Link>
             </div>
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
               {isDark ? (
@@ -124,10 +131,18 @@ export default function SinFiltroPage() {
                 </svg>
               )}
             </button>
-            <div className="menu-icon">
+            <div className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(v => !v)} aria-expanded={menuOpen} role="button">
               <span></span>
               <span></span>
               <span></span>
+            </div>
+            <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+              <Link href="/signin">
+                <button onClick={() => setMenuOpen(false)}>Sign In</button>
+              </Link>
+              <Link href="/register">
+                <button onClick={() => setMenuOpen(false)}>Register</button>
+              </Link>
             </div>
           </div>
         </header>
@@ -198,8 +213,8 @@ export default function SinFiltroPage() {
           padding: 1.5rem 3rem;
           display: grid;
           grid-template-columns: 1fr auto 1fr;
-          justify-items: center;
-          align-items: center;
+          justify-items: left;
+          align-items: left;
           margin-bottom: 2rem;
           box-shadow: ${isDark
             ? `0 10px 30px rgba(0, 0, 0, 0.3),
@@ -263,7 +278,7 @@ export default function SinFiltroPage() {
         }
 
         .friends-text {
-          font-family: 'Poppins', sans-serif;
+          font-family: var(--font-poppins), sans-serif;
           font-size: 1.3rem;
           font-weight: 600;
           color: ${isDark ? '#1a1a1a' : '#2d3748'};
@@ -276,7 +291,7 @@ export default function SinFiltroPage() {
         }
 
         .logo {
-          font-family: 'Archivo Black', sans-serif;
+          font-family: var(--font-archivo), sans-serif;
           font-size: 2.5rem;
           letter-spacing: -0.02em;
           display: flex;
@@ -321,16 +336,22 @@ export default function SinFiltroPage() {
         }
 
         .auth-btn {
-          font-family: 'Poppins', sans-serif;
+          font-family: var(--font-poppins), sans-serif;
           font-size: 1rem;
           font-weight: 600;
-          background: transparent;
-          border: none;
-          color: ${isDark ? '#1a1a1a' : '#2d3748'};
+          background: ${isDark ? 'transparent' : 'rgba(199, 255, 0, 0.1)'};
+          border: ${isDark ? 'none' : '1px solid rgba(199, 255, 0, 0.3)'};
+          color: ${isDark ? '#1a1a1a' : '#111827'};
           cursor: pointer;
           transition: all 0.3s ease;
           position: relative;
-          padding: 0.5rem 0;
+          padding: ${isDark ? '0.5rem 0' : '0.6rem 1rem'};
+          border-radius: ${isDark ? '0' : '8px'};
+        }
+
+        .auth-btn:hover {
+          background: ${isDark ? 'transparent' : 'rgba(199, 255, 0, 0.2)'};
+          transform: ${isDark ? 'none' : 'translateY(-2px)'};
         }
 
         .auth-btn::after {
@@ -342,10 +363,11 @@ export default function SinFiltroPage() {
           height: 2px;
           background: linear-gradient(90deg, var(--hot-pink), var(--neon-green));
           transition: width 0.3s ease;
+          display: ${isDark ? 'block' : 'none'};
         }
 
         .auth-btn:hover::after {
-          width: 100%;
+          width: ${isDark ? '100%' : '0'};
         }
 
         .auth-btn:active {
@@ -386,7 +408,7 @@ export default function SinFiltroPage() {
         }
 
         .menu-icon {
-          display: flex;
+          display: none;
           flex-direction: column;
           gap: 6px;
           cursor: pointer;
@@ -423,6 +445,78 @@ export default function SinFiltroPage() {
         .menu-icon:hover span:nth-child(3) {
           transform: translateX(-5px);
           background: var(--electric-blue);
+        }
+
+        .menu-icon.open span:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+          width: 28px;
+        }
+
+        .menu-icon.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-icon.open span:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+          width: 28px;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+          display: none;
+        }
+
+        @media (max-width: 640px) {
+          .auth-buttons { display: none; }
+
+          .menu-icon { display: flex; }
+
+          .mobile-menu {
+            display: none;
+            position: absolute;
+            right: 1.5rem;
+            top: 100%;
+            margin-top: 0.6rem;
+            width: 200px;
+            background: ${isDark ? 'rgba(26,26,26,0.98)' : 'rgba(255,255,255,0.98)'};
+            border-radius: 12px;
+            padding: 0.5rem;
+            box-shadow: ${isDark
+              ? '0 12px 40px rgba(0,0,0,0.45)'
+              : '0 8px 24px rgba(0,0,0,0.12)'};
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 30;
+            transform-origin: top right;
+            transform: scale(0.98);
+            transition: opacity 160ms ease, transform 160ms ease;
+            opacity: 0;
+          }
+
+          .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          .mobile-menu a button {
+            width: 100%;
+            text-align: left;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.04);
+            font-weight: 700;
+            color: ${isDark ? '#ffffff' : '#111827'};
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 120ms ease, background 120ms ease;
+          }
+
+          .mobile-menu a button:hover {
+            transform: translateY(-3px);
+            background: ${isDark ? 'linear-gradient(90deg, rgba(199,255,0,0.06), rgba(255,20,147,0.04))' : 'rgba(0,0,0,0.04)'};
+          }
         }
 
         .content {
@@ -563,7 +657,7 @@ export default function SinFiltroPage() {
         }
 
         .badge-text {
-          font-family: 'Poppins', sans-serif;
+          font-family: var(--font-poppins), sans-serif;
           font-size: 1.1rem;
           font-weight: 600;
           color: ${isDark ? '#1a1a1a' : '#2d3748'};
