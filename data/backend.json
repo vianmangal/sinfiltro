@@ -1,0 +1,113 @@
+{
+  "users": [],
+  "videos": [
+    {
+      "id": "5eb86d0c-30a3-457d-87d3-8f31cb2f61a6",
+      "fileName": "recording-1770641057506-cc1c724f-60bd-40da-a346-a3779c20125b.webm",
+      "url": "/uploads/recording-1770641057506-cc1c724f-60bd-40da-a346-a3779c20125b.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1457606,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-09T12:44:17.510Z"
+    },
+    {
+      "id": "390883ff-d7df-4c03-b94f-42d5de06d5db",
+      "fileName": "recording-1770642306048-233a733b-0678-43ad-b7d2-e3fdfa8a0f25.webm",
+      "url": "/uploads/recording-1770642306048-233a733b-0678-43ad-b7d2-e3fdfa8a0f25.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 802184,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-09T13:05:06.050Z"
+    },
+    {
+      "id": "1a8ee42b-dd35-4e52-8cef-362f3df548f2",
+      "fileName": "recording-1770652952933-da0f40c5-f020-41e2-99c2-16e4d8d627ec.webm",
+      "url": "/uploads/recording-1770652952933-da0f40c5-f020-41e2-99c2-16e4d8d627ec.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1074719,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-09T16:02:32.937Z"
+    },
+    {
+      "id": "7e4f6cb2-5231-448b-9e48-b551e494e07b",
+      "fileName": "recording-1770713261565-8ce84ca0-330f-4fcf-ad0d-2150e9a17977.webm",
+      "url": "/uploads/recording-1770713261565-8ce84ca0-330f-4fcf-ad0d-2150e9a17977.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 590909,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T08:47:41.572Z"
+    },
+    {
+      "id": "008e5510-6842-46ac-8065-e7c35943dcba",
+      "fileName": "recording-1770739618894-48d66962-e0c3-48e1-928d-887eaf8b8986.webm",
+      "url": "/uploads/recording-1770739618894-48d66962-e0c3-48e1-928d-887eaf8b8986.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:06:58.902Z"
+    },
+    {
+      "id": "8d67d1ac-1187-43f3-affa-b3b013e9fdfe",
+      "fileName": "recording-1770739619319-9e9a93c4-0f9a-4194-ac7e-36e6eb13a80b.webm",
+      "url": "/uploads/recording-1770739619319-9e9a93c4-0f9a-4194-ac7e-36e6eb13a80b.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:06:59.324Z"
+    },
+    {
+      "id": "e1a14e6a-53cd-44be-9207-308fe3dbff28",
+      "fileName": "recording-1770739623377-00794ec2-161c-4231-81ac-2dd225c230b5.webm",
+      "url": "/uploads/recording-1770739623377-00794ec2-161c-4231-81ac-2dd225c230b5.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:07:03.380Z"
+    },
+    {
+      "id": "48fb34f5-97db-46c2-b003-13559c30352f",
+      "fileName": "recording-1770739624391-dbdf9869-ae49-4754-ba8b-8ab25fbc3c56.webm",
+      "url": "/uploads/recording-1770739624391-dbdf9869-ae49-4754-ba8b-8ab25fbc3c56.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:07:04.396Z"
+    },
+    {
+      "id": "6b998817-a083-4e93-84f2-216672e4d8be",
+      "fileName": "recording-1770739624548-2013bf54-56a5-49ea-8c9a-79351ec9bbfb.webm",
+      "url": "/uploads/recording-1770739624548-2013bf54-56a5-49ea-8c9a-79351ec9bbfb.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:07:04.551Z"
+    },
+    {
+      "id": "080d5e05-b14e-43d7-86e2-0558d879cecb",
+      "fileName": "recording-1770739625157-eafad43c-1694-4c28-a654-44251efae365.webm",
+      "url": "/uploads/recording-1770739625157-eafad43c-1694-4c28-a654-44251efae365.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:07:05.160Z"
+    },
+    {
+      "id": "1c7c8289-8d70-4962-ac20-9cfc01a82b56",
+      "fileName": "recording-1770739625352-850e4c7c-4b61-4a10-b72e-691e28a234d2.webm",
+      "url": "/uploads/recording-1770739625352-850e4c7c-4b61-4a10-b72e-691e28a234d2.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1708686,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T16:07:05.358Z"
+    },
+    {
+      "id": "5dc2362a-9603-4e3b-ac19-26a51a04a41b",
+      "fileName": "recording-1770744195387-2de82d65-a76e-481e-947b-8247d332835a.webm",
+      "url": "/uploads/recording-1770744195387-2de82d65-a76e-481e-947b-8247d332835a.webm",
+      "mimeType": "video/webm;codecs=vp9,opus",
+      "size": 1012690,
+      "uploadedBy": "anonymous",
+      "createdAt": "2026-02-10T17:23:15.395Z"
+    }
+  ]
+}
